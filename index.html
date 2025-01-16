@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Veronica Jonas's HTML Page</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="style.css" rel="stylesheet" />
+</head>
+
+<body>
+
+<div id="wrapper">
+    <div id="a">
+        <h1>Veronica Jonas's HTML Page</h1> <!--h1 is the largest heading-->
+
+        <a href="https://www.youtube.com" target="_blank"><h2>Click here to go to <em>YouTube!</em></h2></a> <!--An absolute link (<a>) is a link to another website-->
+        <!--target="_blank" makes a new tab when you click a link-->
+        <!--added emphasis on the word YouTube-->
+
+        <h4>I am a Computer Science Major with a double cognate in Software Engineering and Web & Mobile Programming!<br>
+        I am a Sophomore.</h4> <!--h4 makes the heading smaller than h1-->
+
+        <b>I am from New York!</b><br>
+        <strong>My idea is to make a portfolio website throughout the semester.</strong> <!--<strong> labels important things-->
+        <br></br>
+        <b>Some interesting information about me is:</b><br> <!--<b> stands for bold-->
+        I am a <i>CGL (Community Group Leader) on the Circle.</i><br> <!--<i> stands for italics-->
+        I am the oldest of 3, I have 2 younger sisters who are 18 and 15 years old.<br> <!--<br> makes a new line break-->
+        My favorite color is purple.<br>
+        My dog's name is Chewie (inspired from Chewbacca) from Star Wars. He is a golden brown poodle!
+    </div>
+
+    <div id="b">
+        <form name="info"> <!--starts the form-->
+            <fieldset>
+                <legend>Enter Personal Information</legend>
+
+                <label for="name">Enter your full name:</label>
+                <input type="text" id="name" name="name"/>
+
+                <label for="email">Enter your email:</label>
+                <input type="email" id="email" name="email" value="Required"/>
+
+                <label for="password">Enter your password: &ast;</label>
+                <input type="password" id="password" name="password"/>
+
+                <label>Enter your gender:</label>
+                <div class="gender-group">
+                <input type="radio" name="gender" value="male" id="male"/> <!--type="radio" gives the user options in the form of a circle-->
+                <label for="male">Male</label>
+
+                <input type="radio" name="gender" value="female" id="female"/>
+                <label for="female">Female</label>
+                </div>
+
+                <label for="dob">Enter your Date of Birth:</label>
+                <input type="date" id="dob" name="dob"/>
+
+                <label for="address">Enter your Address:</label>
+                <textarea id="address" name="address"></textarea>
+
+                <input type="submit" value="Submit"/>
+
+                <input type="reset" value="Reset"/>
+            
+            </fieldset>
+        </form>
+    </div>
+</div>
+
+</body>
+</html>
