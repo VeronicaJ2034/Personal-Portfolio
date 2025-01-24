@@ -1,0 +1,96 @@
+body {
+    color: black;
+    font-family: 'Roboto', sans-serif;
+    text-align: center;
+}
+
+#wrapper {
+    z-index: 10;
+    justify-content:center;
+    align-items:center;
+    display: grid;
+    margin: 20px auto;
+    width: 1040px;
+    padding: 10px;
+    grid-template-columns: auto;
+    grid-template-rows: auto;
+    grid-template-areas: 
+        "a";
+}
+
+#a {
+    grid-area: a;
+    ul li{
+        display: inline;
+        font-size: 1.5em;
+        padding: 25px;
+        font-variant: caps;
+        letter-spacing: 3px;
+        font-size: 0.7;
+    }
+    ul li a:link{
+        text-decoration: none;
+        color: blue;
+    }
+    ul li a:visited{
+        text-decoration: none;
+        color: white;
+    }
+    ul li a:hover{
+        text-decoration: none;
+        color: goldenrod;
+    }
+    ul li a:active{
+        text-decoration: none;
+        color: white;
+    }
+}
+
+.cmiddle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+/* Mobile Phones */
+@media screen and (max-width: 480px) {
+    body {
+        font-size: 14px;
+    }
+    .container {
+        padding: 10px;
+    }
+}
+
+/* Tablets */
+@media screen and (max-width: 768px) {
+    body {
+        font-size: 16px;
+    }
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 15px;
+    }
+}
+
+/* Laptops */
+@media screen and (max-width: 1024px) {
+    body {
+        font-size: 18px;
+    }
+    .container {
+        padding: 30px;
+    }
+}
+
+/* Desktops */
+@media screen and (min-width: 1025px) {
+    body {
+        font-size: 20px;
+    }
+    .container {
+        padding: 40px;
+    }
+}

@@ -1,0 +1,156 @@
+body {
+    color: black;
+    background-color:  #f3baf3;
+    font-family: 'Roboto', sans-serif;
+    text-align: center;
+}
+
+#wrapper { /*This is the "wrapper" id*/
+    display: grid;
+    justify-content:center;
+    align-items:center;
+    margin: 20px auto;
+    width: 1040px;
+    padding: 10px;
+    grid-template-columns: auto;
+    grid-template-rows: auto auto;
+    grid-template-areas: 
+        "a"
+        "b";
+}
+
+#a { /*This is the "a" id*/
+    grid-area: a;
+    text-align: center;
+    border: 5px solid black;
+    padding: 10px;
+}
+
+#b { /*This is the "b" id*/
+    grid-area: b;
+    text-align: left;
+    z-index: 20;
+    padding: 20px;
+    width: 100%;
+    max-width: 650px;
+    margin-left: 175px;
+
+    fieldset{
+        border: 1px solid black;
+        padding: 10px;
+    }
+    legend {
+        font-weight: bold;
+        margin-bottom: 10px;
+    }
+    label {
+        display: block;
+        margin-bottom: 10px;
+    }
+    input[type="text"], 
+    input[type="email"],
+    input[type="password"],
+    input[type="phone"],
+    input[type="address"],
+    textarea,
+    input[type="date"]
+    {
+        width: calc(100% - 20px);
+        padding: 8px;
+        margin-bottom: 10px;
+        border: 1px solid black;
+        border-radius: 4px;
+        background-color: white;
+    }
+    .gender-group {
+       margin-bottom: 10px;
+    }
+    .gender-group label {
+        display: inline-block;
+        margin-left: 10px;
+    }
+
+    input[type="radio"] {
+        margin-left:10px;
+        vertical-align: middle;
+    }
+
+    input[type="submit"], input[type="reset"]{
+        padding: 10px 20px;
+        border-radius: 5px;
+    }
+
+    input[type="submit"] {
+        background-color: green;
+    }
+
+    input[type="reset"] {
+        background-color: red;
+    }
+
+    input[type="text"], input[type="email"], input[type="password"], input[type="date"], input[type="phone"], input[type="address"], textarea {
+        background-color:lightyellow;
+    }
+}
+
+ul {
+    list-style-type: inside;
+    padding-left: 0;
+    margin-left: 0;
+}
+
+ul li {
+    margin-left: 0;
+    padding-left: 0;
+}
+
+/*Classes to put the content in the center column*/
+.cmiddle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+/*Creates Responsive Design for Different Devices*/
+/* Mobile Phones */
+@media screen and (max-width: 480px) {
+    body {
+        font-size: 14px;
+    }
+    .container {
+        padding: 10px;
+    }
+}
+
+/* Tablets */
+@media screen and (max-width: 768px) {
+    body {
+        font-size: 16px;
+    }
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 15px;
+    }
+}
+
+/* Laptops */
+@media screen and (max-width: 1024px) {
+    body {
+        font-size: 18px;
+    }
+    .container {
+        padding: 30px;
+    }
+}
+
+/* Desktops */
+@media screen and (min-width: 1025px) {
+    body {
+        font-size: 20px;
+    }
+    .container {
+        padding: 40px;
+    }
+}
