@@ -1,0 +1,131 @@
+body {
+    color: black;
+    background-color:  #ffffff;
+    font-family: 'Roboto', sans-serif;
+    text-align: center;
+}
+
+#wrapper { /*This is the "wrapper" id*/
+    display: grid;
+    justify-content:center;
+    align-items:center;
+    margin: 20px auto;
+    width: 1040px;
+    min-width: 1040px;
+    grid-template-columns: auto;
+    grid-template-rows: auto auto;
+    grid-template-areas: 
+        "a"
+        "b";
+}
+
+#a { 
+    grid-area: a;
+    text-align: center;
+    width: 100%;
+    max-width: 1040px;
+    min-width: 1040px;
+    box-sizing: border-box;
+    border: 5px solid black;
+}
+
+/* Fix flex display for the navigation list */
+#a nav ul {
+    display: flex;  
+    justify-content: center; 
+    gap: 25px; 
+    list-style: none;
+    padding: 0;
+    margin: 0 auto;
+}
+
+/* Style list items */
+#a nav ul li {
+    font-size: 1.5em;
+    font-variant: small-caps;
+    letter-spacing: 2px;
+}
+
+/* link styles */
+#a nav ul li a {
+    text-decoration: none;
+    color: black;
+}
+
+/* Hover effect */
+#a nav ul li a:hover {
+    color: goldenrod;
+    font-size: 1.3em;
+}
+
+#b { /*This is the "b" id*/
+    grid-area: b;
+}
+
+/* Custom alert box styles */
+#customAlert {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    border: 1px solid black;
+    padding: 20px;
+    z-index: 1000;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+#customAlert button {
+    margin-top: 10px;
+}
+
+/*Classes to put the content in the center column*/
+.cmiddle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+/*Creates Responsive Design for Different Devices*/
+/* Mobile Phones */
+@media screen and (max-width: 480px) {
+    body {
+        font-size: 14px;
+    }
+    .container {
+        padding: 10px;
+    }
+}
+
+/* Tablets */
+@media screen and (max-width: 768px) {
+    body {
+        font-size: 16px;
+    }
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 15px;
+    }
+}
+
+/* Laptops */
+@media screen and (max-width: 1024px) {
+    body {
+        font-size: 18px;
+    }
+    .container {
+        padding: 30px;
+    }
+}
+
+/* Desktops */
+@media screen and (min-width: 1025px) {
+    body {
+        font-size: 20px;
+    }
+    .container {
+        padding: 40px;
+    }
+}

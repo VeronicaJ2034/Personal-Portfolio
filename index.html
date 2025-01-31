@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>  
+    <head>
+        <title>Veronica's Portfolio Page</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="styles.css" rel="stylesheet"/>
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+            // Creates a variable to store the current date
+            var currentDate = new Date().toDateString();
+
+            //Shows the current date on the page
+            document.getElementById('currentDate').textContent = "Today's date is: " + currentDate;
+
+            //Shows an alert box when the button is clicked
+            document.getElementById('alertButton').addEventListener('click', function() {
+            document.getElementById('customAlert').style.display = 'block';
+            });
+
+            //Closes the alert box when the button is clicked
+            document.getElementById('closeAlert').addEventListener('click', function() {
+            document.getElementById('customAlert').style.display = 'none';
+            });
+
+            //styles the image of myself
+            var profileImage = document.getElementById('profileImage');
+            profileImage.style.border = '5px solid black';
+            profileImage.style.borderRadius = '50%';
+            profielImage.style.boxShadow = '0 0 10px rgba(0, 0, 0, 0.5)';
+            });
+        </script>
+    </head>
+
+    <body>
+
+        <div id="wrapper">
+            <main>
+                <h1>Veronica's Portfolio</h1>
+                <div id="a" class="cmiddle">
+                    <nav>
+                        <ul>
+                            <li>
+                                <a href="index.html">Home</a>&nbsp;&nbsp;
+                                <a href="about.html">About Me</a>&nbsp;&nbsp;
+                                <a href="projects.html">Projects</a>&nbsp;&nbsp;
+                                <a href="internship.html">Internships</a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+
+                <div id="b">
+                    <section>
+                        <h1>Home</h1>
+                        <p>Welcome to my portfolio page! I am a student at Liberty University with a passion for creating beautiful and functional websites. Explore my website to learn more about me.</p>
+                    </section>
+
+                    <section>
+                        <button id="alertButton">Click me for an alert!</button>
+                    </section>
+
+                    <section>
+                        <p id="currentDate"></p>
+                    </section>
+
+                    <section>
+                        <div id="customAlert">
+                            <p><b>This is my alert box!</b> Welcome to my page! :)</p>
+                            <button id="closeAlert">Close</button>
+                        </div>
+                    </section>
+
+                    <section>
+                        <img id="profileImage" src="Veronica.jpg" alt="Veronica Jonas" width="400" height="400">
+                    </section>
+
+                    <section>
+                        <h2>Contact Me</h2>
+                        <h3>If you would like to get in touch, please email me at <a href="mailto:vrjonas34@icloud.com">vrjonas34@icloud.com</a>, or connect with me on <a href="https://www.linkedin.com/in/veronica-jonas-091541332/"><b>LinkedIn</b></a>.</h3>
+                    </section>
+                </div>
+            </main>
+        </div>
+    </body>
+</html>
