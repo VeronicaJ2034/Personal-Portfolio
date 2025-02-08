@@ -33,11 +33,14 @@ document.addEventListener('DOMContentLoaded', function() {
         }
 
         // Validate that age is a number, not empty, and within a reasonable range
-        if (!firstname || !lastname || !email || !age || isNaN(age) || age<= 0) {
+        if (!firstname || !lastname || !email || !age || isNaN(age) || age <= 0) {
             console.error("Invalid input: Name, email, or age is empty or not a positive number");
             resultDiv.textContent = "Please enter a valid name, email, and age.";
             return;
         }
+
+        // Clear any previous error messages
+        resultDiv.textContent = "";
 
         // Stores age in months
         const ageInMonths = calculateAgeInMonths(age);
