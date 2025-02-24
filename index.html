@@ -4,31 +4,6 @@
         <title>Veronica's Portfolio Page</title>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="styles.css" rel="stylesheet"/>
-        <script>
-            document.addEventListener('DOMContentLoaded', function() {
-            // Creates a variable to store the current date
-            var currentDate = new Date().toDateString();
-
-            //Shows the current date on the page
-            document.getElementById('currentDate').textContent = "Today's date is: " + currentDate;
-
-            //Shows an alert box when the button is clicked
-            document.getElementById('alertButton').addEventListener('click', function() {
-            document.getElementById('customAlert').style.display = 'block';
-            });
-
-            //Closes the alert box when the button is clicked
-            document.getElementById('closeAlert').addEventListener('click', function() {
-            document.getElementById('customAlert').style.display = 'none';
-            });
-
-            //styles the image of myself
-            var profileImage = document.getElementById('profileImage');
-            profileImage.style.border = '5px solid black';
-            profileImage.style.borderRadius = '50%';
-            profielImage.style.boxShadow = '0 0 10px rgba(0, 0, 0, 0.5)';
-            });
-        </script>
     </head>
 
     <body>
@@ -79,6 +54,7 @@
                         <h3>If you would like to get in touch, please email me at <a href="mailto:vrjonas34@icloud.com">vrjonas34@icloud.com</a>, or connect with me on <a href="https://www.linkedin.com/in/veronica-jonas-091541332/"><b>LinkedIn</b></a>.</h3>
                     </section>
                 </div>
+                <script src="pro5.js"></script>
             </main>
         </div>
     </body>
