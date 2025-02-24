@@ -133,12 +133,19 @@ body {
     }
 }
 
-/*Classes to put the content in the center column*/
+/*Classes to put the content in the center or right column*/
 .cmiddle {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
+}
+
+.rmiddle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
 }
 
 /*Creates Responsive Design for Different Devices*/
