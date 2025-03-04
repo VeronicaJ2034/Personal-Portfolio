@@ -24,34 +24,94 @@
             </nav>
         </div>
     
-        <div id="b">
+        <div id="c">
             <center>
                 <h1>About Me</h1>
                 <section class="rmiddle">
                     <p>Hello! I am a sophomore at Liberty University studying for a degree in Computer Science with a double cognate in Software Engineering and Web & Mobile Programming. </p> 
                     <img id="aboutImage" src="comp_sci.jpg" alt="Computer Science Coding" width="60" height="60">
                 </section>
-            
-                <section>
-                    <!-- Shows use of the if, else, and else if statements through pro3.js.-->
+
+                <h2>Make An Account To Get In Contact!</h2>
+                    <section>
+                        <form id="infoForm">
+                            <fieldset>
+                                <legend>Register for an Account:</legend>
+                        
+                                <label for="fullname">Full Name:</label>
+                                <input type="text" id="fullname" name="fullname" required>
+                                <span id="fullnameError" style="color: red;"></span>
+                                <br>
+                        
+                                <label for="username">Username:</label>
+                                <input type="text" id="username" name="username" required>
+                                <span id="usernameError" style="color: red;"></span>
+                                <br>
+                        
+                                <label for="email">Email:</label>
+                                <input type="email" id="email" name="email" required>
+                                <span id="emailError" style="color: red;"></span>
+                                <br>
+                        
+                                <label for="password">Password:</label>
+                                <input type="password" id="password" name="password" required>
+                                <span id="passwordError" style="color: red;"></span>
+                                <br>
+                        
+                                <label for="confirmPassword">Confirm Password:</label>
+                                <input type="password" id="confirmPassword" name="confirmPassword" required>
+                                <span id="confirmPasswordError" style="color: red;"></span>
+                                <br>
+                        
+                                <label for="phone">Phone Number:</label>
+                                <input type="tel" id="phone" name="phone" required>
+                                <span id="phoneError" style="color: red;"></span>
+                                <br>
+                        
+                                <label for="dob">Date of Birth:</label>
+                                <input type="date" id="dob" name="dob" required>
+                                <span id="dobError" style="color: red;"></span>
+                                <br>
+                        
+                                <label>
+                                    <input type="checkbox" id="agreeToTerms" name="agreeToTerms" required>
+                                    Agree to Terms
+                                </label>
+                                <span id="termsError" style="color: red;"></span>
+                                <br>
+                        
+                                <input type="submit" value="Register">
+                            </fieldset>
+                        </form>                        
+                    </section>
+                    <br>
+    
+                    <!-- Add the result div expected by pro2.js -->
+                    <section>
+                        <div id="result"></div>
+                    </section>
+
+                <!--<section>
+                     Shows use of the if, else, and else if statements through pro3.js.
                     <h2>Daily Message:</h2>
                     <div id="daily-message"></div>
 
-                    <!-- Shows use of the switch statement-->
+                    Shows use of the switch statement
                     <h2>Fun Fact and Encouraging Message of the Day:</h2>
                     <div id="fun-fact"></div>
                 </section>
 
-                <!-- Shows use of the for loop through pro3.js -->
+                Shows use of the for loop through pro3.js 
                 <section>
                     <h2>Greetings:</h2>
                     <div id="greetings"></div>
                 </section>
-            </center>
+            </center>-->
         </div>
        
-        <!--Calls the javascript file-->
-        <script src="pro3.js"></script>
+        <!--Calls the javascript file
+        <script src="pro3.js"></script>-->
+        <script src="pro2.js"></script>
         <script src="pro5.js"></script>
     </main>
 </div>
