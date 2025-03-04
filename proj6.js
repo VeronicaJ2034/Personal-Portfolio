@@ -10,7 +10,8 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     form.addEventListener('submit', function (event) {
-        event.preventDefault(); 
+        event.preventDefault();  // Prevent default form submission to handle it ourselves
+        console.log("Form submitted!");  // Check if submit is fired
 
         // Clear previous error messages
         clearErrors();
@@ -85,11 +86,21 @@ document.addEventListener('DOMContentLoaded', function () {
             // If all validations passed, show success message and reset the form
             if (isValid) {
                 console.log("Form is valid and ready to submit.");
-                document.getElementById('successMessage').style.display = 'block';  // Show success message
+                
+                // Show the success message
+                const successMessage = document.getElementById('successMessage');
+                if (successMessage) {
+                    successMessage.style.display = 'block';  // Show success message
+                }
+
+                // Optionally, you can reset the form here if you want:
                 form.reset();  // Reset the form after successful submission
             } else {
                 console.warn("Form has validation errors. Please fix them.");
-                document.getElementById('successMessage').style.display = 'none';  // Hide success message if validation fails
+                const successMessage = document.getElementById('successMessage');
+                if (successMessage) {
+                    successMessage.style.display = 'none';  // Hide success message if validation fails
+                }
             }
         } catch (error) {
             console.error("An error occurred during form validation: ", error);
@@ -103,6 +114,8 @@ document.addEventListener('DOMContentLoaded', function () {
         const errorElement = document.getElementById(elementId);
         if (errorElement) {
             errorElement.textContent = message;
+        } else {
+            console.error(`Error element with id "${elementId}" not found.`);
         }
     }
 
@@ -116,7 +129,6 @@ document.addEventListener('DOMContentLoaded', function () {
         document.getElementById('dobError').textContent = '';
         document.getElementById('termsError').textContent = '';
     }
-    
 
     function calculateAge(birthDate) {
         const today = new Date();
