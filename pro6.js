@@ -82,11 +82,14 @@ document.addEventListener('DOMContentLoaded', function () {
                 isValid = false;
             }
 
-            // If all validations passed, submit the form (you can remove the next line for real submission)
+            // If all validations passed, show success message and reset the form
             if (isValid) {
                 console.log("Form is valid and ready to submit.");
+                document.getElementById('successMessage').style.display = 'block';  // Show success message
+                form.reset();  // Reset the form after successful submission
             } else {
                 console.warn("Form has validation errors. Please fix them.");
+                document.getElementById('successMessage').style.display = 'none';  // Hide success message if validation fails
             }
         } catch (error) {
             console.error("An error occurred during form validation: ", error);
