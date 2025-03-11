@@ -14,6 +14,17 @@ body {
     margin: 20px auto;
 }
 
+#languagesContainer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;  /* Adjusts the space between checkboxes */
+}
+
+#languagesContainer label {
+    display: inline-block;
+    margin-right: 10px;  /* Adds space between checkboxes */
+}
+
 /* Navigation */
 #a { 
     text-align: center;
