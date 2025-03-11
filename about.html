@@ -1,16 +1,17 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>Veronica's Portfolio Page</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link href="styles.css" rel="stylesheet"/>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Veronica's Portfolio Page</title>
+    <link href="styles.css" rel="stylesheet"/>
 </head>
-
 <body>
 
 <div id="wrapper">
     <main>
         <h1>Veronica's Portfolio</h1>
+        
         <div id="a" class="cmiddle">
             <nav>
                 <ul>
@@ -33,88 +34,79 @@
                 </section>
 
                 <h2>Make An Account To Get In Contact!</h2>
-                    <section>
-                        <form id="infoForm">
-                            <fieldset>
-                                <legend>Register for an Account:</legend>
-                        
-                                <label for="fullname">Full Name:</label>
-                                <input type="text" id="fullname" name="fullname" required>
-                                <span id="fullnameError" style="color: red;"></span>
-                                <br>
-                        
-                                <label for="username">Username:</label>
-                                <input type="text" id="username" name="username" required>
-                                <span id="usernameError" style="color: red;"></span>
-                                <br>
-                        
-                                <label for="email">Email:</label>
-                                <input type="email" id="email" name="email" required>
-                                <span id="emailError" style="color: red;"></span>
-                                <br>
-                        
-                                <label for="password">Password:</label>
-                                <input type="password" id="password" name="password" required>
-                                <span id="passwordError" style="color: red;"></span>
-                                <br>
-                        
-                                <label for="confirmPassword">Confirm Password:</label>
-                                <input type="password" id="confirmPassword" name="confirmPassword" required>
-                                <span id="confirmPasswordError" style="color: red;"></span>
-                                <br>
-                        
-                                <label for="phone">Phone Number:</label>
-                                <input type="tel" id="phone" name="phone" required>
-                                <span id="phoneError" style="color: red;"></span>
-                                <br>
-                        
-                                <label for="dob">Date of Birth:</label>
-                                <input type="date" id="dob" name="dob" required>
-                                <span id="dobError" style="color: red;"></span>
-                                <br>
-                        
-                                <label>
-                                    <input type="checkbox" id="agreeToTerms" name="agreeToTerms" required>
-                                    Agree to Terms
-                                </label>
-                                <span id="termsError" style="color: red;"></span>
-                                <br>
-                        
-                                <input type="submit" value="Register">
-                            </fieldset>
-                        </form>  
-                        
-                        <!-- Add the result div expected by proj6.js -->
-                        <div id="successMessage" style="display: none; color: green; margin-top: 20px;">
-                        <p>Your form has been submitted successfully!</p>
-                        </div>
-
-                    </section>
-                    <br>
-
-                <!--<section>
-                     Shows use of the if, else, and else if statements through pro3.js.
-                    <h2>Daily Message:</h2>
-                    <div id="daily-message"></div>
-
-                    Shows use of the switch statement
-                    <h2>Fun Fact and Encouraging Message of the Day:</h2>
-                    <div id="fun-fact"></div>
-                </section>
-
-                Shows use of the for loop through pro3.js 
                 <section>
-                    <h2>Greetings:</h2>
-                    <div id="greetings"></div>
+                    <form id="infoForm">
+                        <fieldset>
+                            <legend>Register for an Account:</legend>
+                            <!-- Form Fields -->
+                            <label for="fullname">Full Name:</label>
+                            <input type="text" id="fullname" name="fullname" required>
+                            <span id="fullnameError" style="color: red;"></span><br>
+
+                            <label for="username">Username:</label>
+                            <input type="text" id="username" name="username" required>
+                            <span id="usernameError" style="color: red;"></span><br>
+
+                            <label for="email">Email:</label>
+                            <input type="email" id="email" name="email" required>
+                            <span id="emailError" style="color: red;"></span><br>
+
+                            <label for="password">Password:</label>
+                            <input type="password" id="password" name="password" required>
+                            <span id="passwordError" style="color: red;"></span><br>
+
+                            <label for="confirmPassword">Confirm Password:</label>
+                            <input type="password" id="confirmPassword" name="confirmPassword" required>
+                            <span id="confirmPasswordError" style="color: red;"></span><br>
+
+                            <label for="phone">Phone Number:</label>
+                            <input type="tel" id="phone" name="phone" required>
+                            <span id="phoneError" style="color: red;"></span><br>
+
+                            <label for="dob">Date of Birth:</label>
+                            <input type="date" id="dob" name="dob" required>
+                            <span id="dobError" style="color: red;"></span><br>
+
+                            <h3>Choose Your Favorite Programming Languages:</h3>
+                            <div id="languagesContainer">
+                                <label><input type="checkbox" name="languages" value="JavaScript"> JavaScript</label>
+                                <label><input type="checkbox" name="languages" value="Python"> Python</label>
+                                <label><input type="checkbox" name="languages" value="Java"> Java</label>
+                                <label><input type="checkbox" name="languages" value="C++"> C++</label>
+                                <label><input type="checkbox" name="languages" value="Ruby"> Ruby</label>
+                            </div>
+
+                            <!-- Display selected languages here -->
+                            <div id="selectedLanguages" style="margin-top: 10px;"></div><br>
+
+                            <label for="agreeToTerms">Terms and conditions:</label>
+                            <input type="checkbox" id="agreeToTerms" name="agreeToTerms" required><br>I agree<br>
+                            <span id="termsError" style="color: red;"></span><br>
+
+                            <!-- File input field -->
+                            <label for="fileInput">Upload Your Resume:</label>
+                            <input type="file" id="fileInput" name="fileInput">
+                            <br>
+                            
+                            <input type="submit" value="Submit">
+                        </fieldset>
+                    </form>
+                    <div id="successMessage" style="display: none; color: green; margin-top: 20px;">
+                        <p>Your form has been submitted successfully!</p>
+                    </div>
                 </section>
-            </center>-->
+
+                <!-- This is the separate div where file content will be displayed -->
+                <div id="fileDisplayArea" style="border: 1px solid #ccc; margin-top: 20px; padding: 10px; display: none;">
+                    <h3>Uploaded File Content:</h3>
+                    <pre id="fileContents"></pre>
+                </div>
+            </center>
         </div>
 
-        <!--Calls the javascript file
-        <script src="pro3.js"></script>-->
-        <script src="proj6.js"></script>
-        <script src="pro5.js"></script>
     </main>
 </div>
+
+<script src="proj7.js"></script>
 </body>
 </html>
