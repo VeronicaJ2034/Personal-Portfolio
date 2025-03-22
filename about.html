@@ -102,11 +102,25 @@
                     <pre id="fileContents"></pre>
                 </div>
             </center>
+
+            <center>
+                <section id="task-section">
+                    <h2>Task Tracker - Add a Task!</h2>
+                    <div id="task-form">
+                        <input type="text" id="task-name" placeholder="Enter task title" required>
+                        <textarea id="task-desc" placeholder="Task description"></textarea>
+                        <input type="date" id="task-date" required>
+                        <button onClick="addTask()">Add Task</button>
+                    </div>
+                    <ul id="task-list"></ul>
+                </section>
+            </center>
         </div>
 
     </main>
 </div>
 
 <script src="proj7.js"></script>
+<script src="objects.js"></script>
 </body>
 </html>
