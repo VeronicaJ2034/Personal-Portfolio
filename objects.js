@@ -49,22 +49,48 @@ function addTask() {
     document.getElementById("task-date").value = "";
 }
 
+//Shows Tasks
 function renderTasks() {
     const taskList = document.getElementById("task-list");
     taskList.innerHTML = ""; // Clear existing tasks
 
     tasks.forEach((task, index) => {
         const li = document.createElement("li");
+        li.style.display = "flex";
+        li.style.alignItems = "center";
+        li.style.justifyContent = "space-between";
+        li.style.padding = "10px";
+        li.style.border = "1px solid #ccc";
+        li.style.borderRadius = "5px";
+        li.style.marginBottom = "10px";
+
         li.innerHTML = `
-            <strong>${task.name}</strong><br>
-            ${task.description}<br>
-            <em>Due: ${task.dueDate}</em><br>
-            <button onclick="deleteTask(${index})">Delete</button><br><br>
+            <div style="display: flex; align-items: center; gap: 10px;">
+                <input type="checkbox" onclick="toggleTask(${index})" ${task.completed ? "checked" : ""}>
+                <span style="text-decoration: ${task.completed ? 'line-through' : 'none'}; font-weight: bold;">
+                    ${task.name}
+                </span>
+            </div>
+            <div>
+                <p style="margin: 5px 0;">${task.description}</p>
+                <em>Due: ${task.dueDate}</em>
+            </div>
+            <button onclick="deleteTask(${index})" style="background-color: red; color: white; border: none; padding: 5px 10px; cursor: pointer;">
+                Delete
+            </button>
         `;
+
         taskList.appendChild(li);
     });
 }
 
+//Toggle Completed
+function toggleTask(index) {
+    tasks[index].toggleCompleted();x
+    renderTasks(); // Update the UI
+}
+
+//Delete Task
 function deleteTask(index) {
     tasks.splice(index, 1);
     renderTasks();
