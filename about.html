@@ -10,6 +10,12 @@
 
 <div id="wrapper">
     <main>
+        <header>
+            <div id="cookie-notice">
+                <p>By using this site, you agree to our terms.</p>
+                <button id="accept-cookies">I Accept</button>
+            </div>
+        </header>
         <h1>Veronica's Portfolio</h1>
         
         <div id="a" class="cmiddle">
@@ -27,18 +33,44 @@
     
         <div id="c">
             <center>
-                <h1>About Me</h1>
-                <section class="rmiddle">
-                    <p>Hello! I am a sophomore at Liberty University studying for a degree in Computer Science with a double cognate in Software Engineering and Web & Mobile Programming. </p> 
-                    <img id="aboutImage" src="comp_sci.jpg" alt="Computer Science Coding" width="60" height="60">
-                </section>
+                    <h1>About Me</h1>
+                    <section class="rmiddle">
+                        <p>Hello! I am a sophomore at Liberty University studying for a degree in Computer Science with a double cognate in Software Engineering and Web & Mobile Programming. </p> 
+                        <img id="aboutImage" src="comp_sci.jpg" alt="Computer Science Coding" width="60" height="60">
+                    </section>
+    
+    
+                    <h3>Change The Background Color Of The Website!</h3>
+                    <section>
+                        <form id="customization-form">
+                            <label for="bgColor">Select Background Color:</label>
+                            <select id="bgColor">
+                                <option value="" disabled selected>Select a color</option>
+                                <option value="red">Red</option>
+                                <option value="blue">Blue</option>
+                                <option value="green">Green</option>
+                                <option value="yellow">Yellow</option>
+                                <option value="purple">Purple</option>
+                                <option value="orange">Orange</option>
+                                <option value="black">Black</option>
+                            </select>
+                            
+                            <button type="submit">Apply</button>
+                        </form>
+                        
+                        <!-- Clear button -->
+                        <br><button id="clear-btn">Clear Customization</button>
+                        
+                        <p id="customization-status">No customization applied yet.</p>                                              
+                    </section>
 
+                <!--
                 <h2>Make An Account To Get In Contact!</h2>
                 <section>
                     <form id="infoForm">
                         <fieldset>
                             <legend>Register for an Account:</legend>
-                            <!-- Form Fields -->
+                            
                             <label for="fullname">Full Name:</label>
                             <input type="text" id="fullname" name="fullname" required>
                             <span id="fullnameError" style="color: red;"></span><br>
@@ -76,14 +108,14 @@
                                 <label><input type="checkbox" name="languages" value="Ruby"> Ruby</label>
                             </div>
 
-                            <!-- Display selected languages here -->
+                            
                             <div id="selectedLanguages" style="margin-top: 10px;"></div><br>
 
                             <label for="agreeToTerms">Terms and conditions:</label>
                             <input type="checkbox" id="agreeToTerms" name="agreeToTerms" required><br>I agree<br>
                             <span id="termsError" style="color: red;"></span><br>
 
-                            <!-- File input field -->
+                            
                             <label for="fileInput">Upload Your Resume:</label>
                             <input type="file" id="fileInput" name="fileInput">
                             <br>
@@ -95,14 +127,17 @@
                         <p>Your form has been submitted successfully!</p>
                     </div>
                 </section>
+                -->
 
-                <!-- This is the separate div where file content will be displayed -->
+                <!-- This is the separate div where file content will be displayed 
                 <div id="fileDisplayArea" style="border: 1px solid #ccc; margin-top: 20px; padding: 10px; display: none;">
                     <h3>Uploaded File Content:</h3>
                     <pre id="fileContents"></pre>
                 </div>
-            </center>
+            </center> -->
+        
 
+            <!--
             <center>
                 <section id="task-section">
                     <h2>Task Tracker - Add a Task!</h2>
@@ -115,12 +150,14 @@
                     <ul id="task-list"></ul>
                 </section>
             </center>
+            -->
         </div>
 
     </main>
 </div>
 
-<script src="proj7.js"></script>
-<script src="objects.js"></script>
+<script src="proj9.js"></script>
+<!--<script src="proj7.js"></script>-->
+<!--<script src="objects.js"></script>-->
 </body>
 </html>
