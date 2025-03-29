@@ -14,6 +14,30 @@ body {
     margin: 20px auto;
 }
 
+/* Cookie notification style */
+#cookie-notice {
+    background-color: #f1f1f1;
+    padding: 10px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    border-bottom: 1px solid #ccc;
+    z-index: 1000;
+}
+#cookie-notice button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+#cookie-notice button:hover {
+    background-color: #45a049;
+}
+
+/*For adding tasks*/
 #task-list {
     list-style-type: none; /* Removes bullets from all list items */
     padding: 0; /* Removes default padding */
@@ -230,4 +254,4 @@ body {
     .container {
         padding: 40px;
     }
-}s
+}
