@@ -1,182 +1,166 @@
-// JavaScript code for the drag-and-drop matching game
-
-// Global variables
-let draggedImg = null;
-let startTime = null;
-let timerInterval = null;
-let attempts = 0;
-let correctMatches = 0;
-let highScore = 0;
-let successMessage = null;
-
-// Correct mapping of images to labels
-const correctMap = {
-  "Playa.jpg": "Playa",
-  "Gato.jpg": "Gato",
-  "Puerta.jpg": "Puerta",
-  "Familia.jpg": "Familia",
-  "Casa.jpg": "Casa",
-  "Lapiz.jpg": "Lapiz",
-  "Zapatos.jpg": "Zapatos",
-  "Nieve.jpg": "Nieve"
+let correctMap = {
+  "Gato": "Gato.jpg",
+  "Casa": "Casa.jpg",
+  "Playa": "Playa.jpg",
+  "Nieve": "Nieve.jpg",
+  "Zapatos": "Zapatos.jpg",
+  "Lapiz": "Lapiz.jpg",
+  "Familia": "Familia.jpg",
+  "Puerta": "Puerta.jpg"
 };
 
-//order of labels in the grid
-const labelOrder = [
-  "Gato", "Casa", "Playa", "Nieve",
-  "Zapatos", "Lapiz", "Familia", "Puerta"
-];
+let draggedImg = null;
+let timer = 0;
+let timerInterval = null;
+let score = 0;
+let attempts = 0;
+let highScore = 0;
+let correctMatches = 0;
 
-// Initialize the displays
-const timerDisplay = document.createElement('p');
-const scoreDisplay = document.createElement('p');
-const highScoreDisplay = document.createElement('p');
-timerDisplay.style.fontWeight = 'bold';
-scoreDisplay.style.fontWeight = 'bold';
-highScoreDisplay.style.fontWeight = 'bold';
+const gridCells = document.querySelectorAll(".grid-cell");
+const photoPool = document.getElementById("photo-pool");
+const gameStats = document.getElementById("game-stats");
 
-// Set initial styles for the stats display
-document.querySelector('#game-stats').append(timerDisplay, scoreDisplay, highScoreDisplay);
+// Create and display stats elements
+const timerDisplay = document.createElement("p");
+const scoreDisplay = document.createElement("p");
+const highScoreDisplay = document.createElement("p");
+const successMessage = document.createElement("p");
 
-// Start the timer
+timerDisplay.textContent = "Time: 0s";
+scoreDisplay.textContent = "Score: 0/8";
+highScoreDisplay.textContent = "High Score: 0";
+successMessage.style.fontWeight = "bold";
+successMessage.style.color = "green";
+
+gameStats.appendChild(timerDisplay);
+gameStats.appendChild(scoreDisplay);
+gameStats.appendChild(highScoreDisplay);
+gameStats.appendChild(successMessage);
+
+document.getElementById("reset-btn").addEventListener("click", resetGame);
+
+// Timer logic
 function startTimer() {
-  startTime = Date.now();
   clearInterval(timerInterval);
   timerInterval = setInterval(() => {
-    const seconds = Math.floor((Date.now() - startTime) / 1000);
-    timerDisplay.textContent = `Time: ${seconds}s`;
+    timer++;
+    timerDisplay.textContent = `Time: ${timer}s`;
   }, 1000);
 }
 
-// Allow drag
-document.querySelectorAll('.photo-option').forEach(img => {
-  img.addEventListener('dragstart', (e) => {
+function stopTimer() {
+  clearInterval(timerInterval);
+}
+
+// Drag-and-Drop Functions
+document.querySelectorAll(".photo-option").forEach(img => {
+  img.addEventListener("dragstart", e => {
     draggedImg = e.target;
   });
 });
 
-// Allow drop logic
-function allowDrop(e) {
-  e.preventDefault();
-}
+// Highlight effect
+gridCells.forEach(cell => {
+  cell.addEventListener("dragover", e => {
+    e.preventDefault();
+    if (!cell.hasChildNodes()) {
+      cell.style.backgroundColor = "lightblue";
+    }
+  });
 
-// Handle drop logic
+  cell.addEventListener("dragleave", () => {
+    cell.style.backgroundColor = "#f0f0f0";
+  });
+});
+
 function drop(e) {
   e.preventDefault();
-  const target = e.target.closest('.grid-cell');
+  const cell = e.target.closest(".grid-cell");
+  cell.style.backgroundColor = "#f0f0f0";
 
-  // Only allow drop if the target grid cell is empty and image is not locked
-  if (draggedImg && target && target.children.length === 0 && !draggedImg.classList.contains('locked')) {
-    target.appendChild(draggedImg);
-    draggedImg.classList.add('locked');  // Lock the image in place
-    draggedImg.setAttribute('draggable', 'false');  // Make it non-draggable
-    attempts++;
+  if (!cell || cell.hasChildNodes() || !draggedImg) return;
 
-    const imgName = draggedImg.getAttribute('src').split('/').pop();
-    const labelIndex = Array.from(document.querySelectorAll('.grid-cell')).indexOf(target);
-    const labelText = labelOrder[labelIndex];
+  const labelIndex = Array.from(gridCells).indexOf(cell);
+  const labelOrder = ["Gato", "Casa", "Playa", "Nieve", "Zapatos", "Lapiz", "Familia", "Puerta"];
+  const expectedLabel = labelOrder[labelIndex];
 
-    if (correctMap[imgName] === labelText) {
-      correctMatches++;
-    }
+  const actualImageName = draggedImg.src.split("/").pop();
+  const correctImage = correctMap[expectedLabel];
 
-    updateScore();
-    checkForSuccess(); // Check for success after each drop
+  cell.appendChild(draggedImg);
+  draggedImg.setAttribute("draggable", "false");
+  draggedImg.classList.add("snapped");
 
-    console.log(`Dropped: ${imgName} on ${labelText}`);
+  attempts++;
+
+  if (actualImageName === correctImage) {
+    correctMatches++;
   }
-}
 
-// Check if all images are correctly placed
-function checkForSuccess() {
-  const allFilled = Array.from(document.querySelectorAll('.grid-cell')).every(cell => cell.children.length > 0);
-  
-  if (allFilled && correctMatches === 8) {
-    clearInterval(timerInterval);
-    if (correctMatches > highScore) {
-      highScore = correctMatches;
-    }
-    highScoreDisplay.textContent = `High Score: ${highScore}/8`;
+  scoreDisplay.textContent = `Score: ${correctMatches}/8`;
+
+  if (correctMatches === 8 || attempts === 8) {
+    stopTimer();
+    updateHighScore();
     displaySuccessMessage();
   }
 }
 
-// Display success message
 function displaySuccessMessage() {
-  // Only display success message if it's not already there
-  if (!successMessage) {
-    successMessage = document.createElement('p');
-    successMessage.textContent = "Congratulations! You've matched all the pieces correctly!";
-    successMessage.style.fontSize = '20px';
-    successMessage.style.fontWeight = 'bold';
-    successMessage.style.color = 'green';
-    document.querySelector('#game-stats').appendChild(successMessage);
+  if (correctMatches === 8) {
+    successMessage.textContent = "All matches correct!";
+  } else {
+    successMessage.textContent = "Game over! Not all matches were correct.";
   }
 }
 
-// Update score display
-function updateScore() {
-  const accuracy = attempts > 0 ? Math.round((correctMatches / attempts) * 100) : 0;
-  scoreDisplay.textContent = `Score: ${correctMatches}/8 | Accuracy: ${accuracy}%`;
+function updateHighScore() {
+  if (correctMatches > highScore) {
+    highScore = correctMatches;
+    highScoreDisplay.textContent = `High Score: ${highScore}`;
+  }
 }
 
-// Reset and shuffle
-document.getElementById('reset-btn').addEventListener('click', () => {
-  // Remove success message when reset is clicked
-  if (successMessage) {
-    successMessage.remove();
-    successMessage = null;
-  }
+function resetGame() {
+  clearInterval(timerInterval);
+  timer = 0;
+  correctMatches = 0;
+  attempts = 0;
+  draggedImg = null;
+  timerDisplay.textContent = "Time: 0s";
+  scoreDisplay.textContent = "Score: 0/8";
+  successMessage.textContent = "";
 
-  const images = [];
+  // Collect all images from grid and photo pool
+  const allImages = [];
 
-  // Get images from grid
-  document.querySelectorAll('.grid-cell').forEach(cell => {
-    const img = cell.querySelector('img');
-    if (img) {
-      images.push(img);
-      cell.innerHTML = '';
-      img.setAttribute('draggable', 'true');  // Reset draggable to true for all images
-      img.classList.remove('locked');  // Unlock image
+  // From grid cells
+  gridCells.forEach(cell => {
+    if (cell.firstChild) {
+      allImages.push(cell.removeChild(cell.firstChild));
+    }
+    cell.style.backgroundColor = "#f0f0f0";
+  });
+
+  // From photo pool
+  const poolImages = Array.from(photoPool.querySelectorAll("img"));
+  poolImages.forEach(img => {
+    if (img.parentElement === photoPool) {
+      allImages.push(img);
     }
   });
 
-  // Get images from pool
-  document.querySelectorAll('#photo-pool img').forEach(img => images.push(img));
-
-  // Shuffle images
-  for (let i = images.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [images[i], images[j]] = [images[j], images[i]];
-  }
-
-  // Reinsert images back into the pool
-  const photoPool = document.getElementById('photo-pool');
-  photoPool.innerHTML = '';
-  images.forEach(img => {
+  // Shuffle and re-add to photo pool
+  const shuffled = allImages.sort(() => 0.5 - Math.random());
+  shuffled.forEach(img => {
+    img.setAttribute("draggable", "true");
+    img.classList.remove("snapped");
     photoPool.appendChild(img);
-    // Reset draggable attribute and pointer-events for each image
-    img.setAttribute('draggable', 'true');
-    img.style.pointerEvents = 'auto';
-    img.style.cursor = 'grab';  // Reset cursor to indicate draggable
   });
 
-  // Reset grid cells
-  const gridCells = document.querySelectorAll('.grid-cell');
-  gridCells.forEach(cell => {
-    cell.innerHTML = '';  // Clear each grid cell
-  });
-
-  // Reset stats
-  correctMatches = 0;
-  attempts = 0;
-  updateScore();
   startTimer();
-});
+}
 
-// Start game on load
-window.addEventListener('load', () => {
-  updateScore();
-  highScoreDisplay.textContent = `High Score: ${highScore}/8`;
-  startTimer();
-});
+// Start the timer on page load
+window.onload = startTimer;
