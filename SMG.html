@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Veronica's Spanish Matching Game</title>
+  <link href="stylesGame.css" rel="stylesheet"/>
+</head>
+<body>
+
+  <div id="wrapper">
+    <main>
+      <h1>Veronica's Portfolio</h1>
+      <div id="a" class="cmiddle">
+        <h2>Spanish Matching Game</h2>
+        <section>
+          <!--Rules and comments-->
+          <p>Drag the cards to match the Spanish words with their English pictures!</p>
+          <p>The snapping into place feature makes the image transform to the size of the droppable area.</p>
+          <p>If you click the button again it will shuffle the pieces.</p>
+          <p>A success message will appear with all pieces correctly inputted.</p>
+          <p>The timer stops when the pieces are put into a slot.</p>
+          <p>Once pieces are slotted, they are not movable again, even if they are in the wrong slot.</p>
+          <p>Hovering over the slots changes the color of the slots.</p>
+        </section>
+          
+        <div id="game-stats"></div>
+        <button id="reset-btn">Reset & Shuffle</button><br>
+
+        <!--Available pictures-->
+        <div class="photo-pool" id="photo-pool">
+          <img src="Playa.jpg" class="photo-option" alt="img1" draggable="true">
+          <img src="Gato.jpg" class="photo-option" alt="img2" draggable="true">
+          <img src="Puerta.jpg" class="photo-option" alt="img3" draggable="true">
+          <img src="Familia.jpg" class="photo-option" alt="img4" draggable="true">
+          <img src="Casa.jpg" class="photo-option" alt="img5" draggable="true">
+          <img src="Lapiz.jpg" class="photo-option" alt="img6" draggable="true">
+          <img src="Zapatos.jpg" class="photo-option" alt="img7" draggable="true">
+          <img src="Nieve.jpg" class="photo-option" alt="img8" draggable="true">
+        </div>
+
+        <!--Empty Slots-->
+        <div class="photo-grid">
+          <p>Gato</p><p>Casa</p><p>Playa</p><p>Nieve</p>
+          <div class="grid-cell" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+          <div class="grid-cell" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+          <div class="grid-cell" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+          <div class="grid-cell" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+          <p>Zapatos</p><p>Lapiz</p><p>Familia</p><p>Puerta</p>
+          <div class="grid-cell" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+          <div class="grid-cell" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+          <div class="grid-cell" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+          <div class="grid-cell" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="proj10.js"></script>
+
+</body>
+</html>
