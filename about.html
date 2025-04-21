@@ -1,74 +1,68 @@
-// === Image styling ===
-function styleImageById(id) {
-    const img = document.getElementById(id);
-    if (img) {
-        img.style.border = '1px solid black';
-        img.style.borderRadius = '60%';
-        img.style.boxShadow = '0 0 10px rgb(0, 0, 0)';
-    }
-}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Veronica's Portfolio Page</title>
+    <link href="styles.css" rel="stylesheet"/>
+</head>
+<body>
 
-styleImageById('aboutImage');
-styleImageById('NewYorkImage');
-styleImageById('GamesImage');
+<div id="wrapper">
+    <main>
+        <!--
+        <header>
+            <div id="cookie-notice">
+                <p>By using this site, you agree to our terms.</p>
+                <button id="accept-cookies">I Accept</button>
+            </div>
+        </header>
+        -->
+        <h1>Veronica's Portfolio</h1>
+        
+        <div id="a" class="cmiddle">
+            <nav>
+                <ul>
+                    <li>
+                        <a href="index.html">Home</a>&nbsp;&nbsp;
+                        <a href="about.html">About Me</a>&nbsp;&nbsp;
+                        <a href="projects.html">Projects</a>&nbsp;&nbsp;
+                        <a href="internship.html">Internships</a>&nbsp;&nbsp;
+                        <a href="games.html">Games</a>&nbsp;&nbsp;
+                        <a href="API.html">API</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    
+        <div id="c">
+            <center>
+                    <h1>About Me</h1>
+                    <section class="rmiddle">
+                        <p>Hello! I am a sophomore at Liberty University studying for a degree in Computer Science with a double cognate in Software Engineering and Web & Mobile Programming. </p> 
+                        <img id="aboutImage" src="comp_sci.jpg" alt="Computer Science Coding" width="60" height="60">
+                    </section>
 
-// === Cookie Functions ===
-function getCookie(name) {
-    let decodedCookie = decodeURIComponent(document.cookie);
-    let cookies = decodedCookie.split(';');
-    for (let i = 0; i < cookies.length; i++) {
-        let cookie = cookies[i].trim();
-        if (cookie.indexOf(name + "=") === 0) {
-            return cookie.substring(name.length + 1, cookie.length);
-        }
-    }
-    return "";
-}
+                    <b>Some interesting information about me is:</b><br><br>
 
-function setCookie(name, value, days) {
-    let d = new Date();
-    d.setTime(d.getTime() + (days * 24 * 60 * 60 * 1000));
-    let expires = "expires=" + d.toUTCString();
-    document.cookie = name + "=" + value + ";" + expires + ";path=/";
-}
+                    <section class="rmiddle">
+                        <br><br>
+                         <!--<b> stands for bold-->
+                            <p>I am from New York! &nbsp;</p> <img id="NewYorkImage" src="newyork.jpg" alt="New York" width="150" height="150">
+                    </section>
+                    <br>
+                    
+                    My favorite color is purple.<br>
+                    I am a <i>CGL (Community Group Leader) on the Circle.</i><br> <!--<i> stands for italics-->
+                    I am the oldest of 3, I have 2 younger sisters who are 18 and 15 years old.<br> <!--<br> makes a new line break-->
+                    My dog's name is Chewie (inspired from Chewbacca) from Star Wars. He is a golden brown poodle!
+        </div>
 
-function deleteCookie(name) {
-    setCookie(name, "", -1);
-}
+    </main>
+</div>
 
-// === Cookie Notice Handling ===
-function showCookieNotice() {
-    const cookieNotice = document.getElementById('cookie-notice');
-    const cookieConsent = getCookie('cookieConsent');
-    console.log('Cookie consent status:', cookieConsent);
-
-    if (cookieNotice) {
-        if (!cookieConsent) {
-            cookieNotice.style.display = 'block';
-            console.log('Cookie notice displayed.');
-        } else {
-            cookieNotice.style.display = 'none';
-            console.log('Cookie notice already accepted.');
-        }
-    }
-}
-
-function acceptCookies() {
-    setCookie('cookieConsent', 'true', 365);
-    const notice = document.getElementById('cookie-notice');
-    if (notice) {
-        notice.style.display = 'none';
-        console.log('Cookies accepted and notice hidden.');
-    }
-}
-
-// === DOM Ready Setup ===
-document.addEventListener('DOMContentLoaded', function () {
-    console.log('DOM fully loaded and parsed');
-    showCookieNotice();
-
-    const acceptButton = document.getElementById('accept-cookies');
-    if (acceptButton) {
-        acceptButton.addEventListener('click', acceptCookies);
-    }
-});
+<script src="proj9.js"></script>
+<!--<script src="proj7.js"></script>-->
+<!--<script src="objects.js"></script>-->
+</body>
+</html>
