@@ -1,180 +1,156 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Veronica's Portfolio Page</title>
-    <link href="styles.css" rel="stylesheet"/>
-</head>
-<body>
+ // Function to get query string value
+/*function getQueryStringParam(name) {
+    const urlParams = new URLSearchParams(window.location.search);
+    return urlParams.get(name);
+}*/
 
-<div id="wrapper">
-    <main>
-        <header>
-            <div id="cookie-notice">
-                <p>By using this site, you agree to our terms.</p>
-                <button id="accept-cookies">I Accept</button>
-            </div>
-        </header>
-        <h1>Veronica's Portfolio</h1>
-        
-        <div id="a" class="cmiddle">
-            <nav>
-                <ul>
-                    <li>
-                        <a href="index.html">Home</a>&nbsp;&nbsp;
-                        <a href="about.html">About Me</a>&nbsp;&nbsp;
-                        <a href="projects.html">Projects</a>&nbsp;&nbsp;
-                        <a href="internship.html">Internships</a>&nbsp;&nbsp;
-                        <a href="games.html">Games</a>&nbsp;&nbsp;
-                        <a href="API.html">API</a>
-                    </li>
-                </ul>
-            </nav>
-        </div>
+ // Check and style aboutImage only if it exists
+ var aboutImage = document.getElementById('aboutImage');
+ if (aboutImage) {
+     aboutImage.style.border = '1px solid black';
+     aboutImage.style.borderRadius = '60%';
+     aboutImage.style.boxShadow = '0 0 10px rgb(0, 0, 0)';
+ }
+
+ // New York Image
+ var NewYorkImage = document.getElementById('NewYorkImage');
+ if (NewYorkImage) {
+    NewYorkImage.style.border = '1px solid black';
+    NewYorkImage.style.borderRadius = '60%';
+    NewYorkImage.style.boxShadow = '0 0 10px rgb(0, 0, 0)';
+ }
+
+ //  Games Image
+ var GamesImage = document.getElementById('GamesImage');
+ if (GamesImage) {
+    GamesImage.style.border = '1px solid black';
+    GamesImage.style.borderRadius = '60%';
+    GamesImage.style.boxShadow = '0 0 10px rgb(0, 0, 0)';
+ }
+
+// Function to get cookie value
+function getCookie(name) {
+    let decodedCookie = decodeURIComponent(document.cookie);
+    let cookies = decodedCookie.split(';');
+    for (let i = 0; i < cookies.length; i++) {
+        let cookie = cookies[i].trim();
+        if (cookie.indexOf(name + "=") === 0) {
+            return cookie.substring(name.length + 1, cookie.length);
+        }
+    }
+    return "";
+}
+
+// Function to set a cookie with expiration
+function setCookie(name, value, days) {
+    let d = new Date();
+    d.setTime(d.getTime() + (days * 24 * 60 * 60 * 1000));
+    let expires = "expires=" + d.toUTCString();
+    document.cookie = name + "=" + value + ";" + expires + ";path=/";
+}
+
+// Function to delete a cookie
+function deleteCookie(name) {
+    setCookie(name, "", -1); // Setting expiration to past will delete the cookie
+}
+
+// Apply customization from query string or cookies
+/*function applyCustomization() {
+    let color = getQueryStringParam('bgColor') || getCookie('bgColor');
     
-        <div id="c">
-            <center>
-                    <h1>About Me</h1>
-                    <section class="rmiddle">
-                        <p>Hello! I am a sophomore at Liberty University studying for a degree in Computer Science with a double cognate in Software Engineering and Web & Mobile Programming. </p> 
-                        <img id="aboutImage" src="comp_sci.jpg" alt="Computer Science Coding" width="60" height="60">
-                    </section>
+    // Apply customization if color is found
+    if (color) {
+        document.body.style.backgroundColor = color;
+        console.log('Background color is set to ' + color);
+    } else {
+        console.log('No customization applied.');
+    }
 
-                    <b>Some interesting information about me is:</b><br><br>
+    // Only update the customization-status on about.html
+    if (window.location.pathname.includes('about.html')) {
+        const statusElement = document.getElementById('customization-status');
+        if (statusElement) {
+            if (color) {
+                statusElement.textContent = 'Background color is set to ' + color;
+            } else {
+                statusElement.textContent = 'No customization applied.';
+            }
+        } else {
+            console.warn("Customization status element not found.");
+        }
+    }
+}*/
 
-                    <section class="rmiddle">
-                        <br><br>
-                         <!--<b> stands for bold-->
-                            <p>I am from New York! &nbsp;</p> <img id="NewYorkImage" src="newyork.jpg" alt="New York" width="150" height="150">
-                    </section>
-                    <br>
-                    
-                        My favorite color is purple.<br>
-                        I am a <i>CGL (Community Group Leader) on the Circle.</i><br> <!--<i> stands for italics-->
-                        I am the oldest of 3, I have 2 younger sisters who are 18 and 15 years old.<br> <!--<br> makes a new line break-->
-                        My dog's name is Chewie (inspired from Chewbacca) from Star Wars. He is a golden brown poodle!
+// Handle form submission
+/*function handleFormSubmit(event) {
+    event.preventDefault();
+    const color = document.getElementById('bgColor').value;
+    // Update URL with selected background color
+    window.location.search = 'bgColor=' + color;
+    // Save background color in cookies
+    setCookie('bgColor', color, 7); // Cookie expires in 7 days
+}*/
+
+// Show the cookie notice if not accepted
+function showCookieNotice() {
+    const cookieNotice = document.getElementById('cookie-notice');
+    const cookieConsent = getCookie('cookieConsent');
+    console.log('Cookie consent status:', cookieConsent);
+    if (cookieNotice) {
+        if (!cookieConsent) {
+            cookieNotice.style.display = 'block';  // Show notice
+            console.log('Cookie notice displayed.');
+        } else {
+            cookieNotice.style.display = 'none';   // Hide if already accepted
+            console.log('Cookie notice already accepted.');
+        }
+    }
+}
+
+// Handle accepting cookies
+function acceptCookies() {
+    setCookie('cookieConsent', 'true', 365); // Save consent for 1 year
+    const notice = document.getElementById('cookie-notice');
+    if (notice) {
+        notice.style.display = 'none'; // ← This hides the notice
+        console.log('Cookies accepted and notice hidden.');
+    }
+}
+
+// Clear customization (reset background and delete cookies)
+/*function clearCustomization() {
+    // Reset background color to default (white)
+    document.body.style.backgroundColor = '#ffffff';
     
-                    <!--
-                    <h3>Change The Background Color Of The Website!</h3>
-                    <section>
-                        <form id="customization-form">
-                            <label for="bgColor">Select Background Color:</label>
-                            <select id="bgColor">
-                                <option value="" disabled selected>Select a color</option>
-                                <option value="red">Red</option>
-                                <option value="blue">Blue</option>
-                                <option value="green">Green</option>
-                                <option value="yellow">Yellow</option>
-                                <option value="purple">Purple</option>
-                                <option value="orange">Orange</option>
-                                <option value="black">Black</option>
-                            </select>
-                            
-                            <button type="submit">Apply</button>
-                        </form>
-                        
-                         Clear button to reset the background color
-                        <br><button id="clear-btn">Clear Customization</button>
-                        
-                        <p id="customization-status">No customization applied yet.</p>                                              
-                    </section>
-                    -->
+    // Clear cookies related to customization
+    deleteCookie('bgColor');
+    deleteCookie('cookieConsent');
+    
+    // Reset the query string by removing the bgColor parameter
+    window.history.pushState({}, document.title, window.location.pathname);
+    
+    // Update the status text on about.html
+    if (window.location.pathname.includes('about.html')) {
+        document.getElementById('customization-status').textContent = 'Customization cleared. No background color set.';
+    }
+    console.log('Customization cleared. No background color set.');
+}*/
 
-                <!--
-                <h2>Make An Account To Get In Contact!</h2>
-                <section>
-                    <form id="infoForm">
-                        <fieldset>
-                            <legend>Register for an Account:</legend>
-                            
-                            <label for="fullname">Full Name:</label>
-                            <input type="text" id="fullname" name="fullname" required>
-                            <span id="fullnameError" style="color: red;"></span><br>
+// Wait for the DOM to load before running applyCustomization and cookie handling
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('DOM fully loaded and parsed');
+    //applyCustomization();
+    showCookieNotice();
 
-                            <label for="username">Username:</label>
-                            <input type="text" id="username" name="username" required>
-                            <span id="usernameError" style="color: red;"></span><br>
+    if (window.location.pathname.includes('about.html')) {
+        //const form = document.getElementById('customization-form');
+        //form.addEventListener('submit', handleFormSubmit);
+   
 
-                            <label for="email">Email:</label>
-                            <input type="email" id="email" name="email" required>
-                            <span id="emailError" style="color: red;"></span><br>
+        const acceptButton = document.getElementById('accept-cookies');
+        acceptButton.addEventListener('click', acceptCookies)
 
-                            <label for="password">Password:</label>
-                            <input type="password" id="password" name="password" required>
-                            <span id="passwordError" style="color: red;"></span><br>
-
-                            <label for="confirmPassword">Confirm Password:</label>
-                            <input type="password" id="confirmPassword" name="confirmPassword" required>
-                            <span id="confirmPasswordError" style="color: red;"></span><br>
-
-                            <label for="phone">Phone Number:</label>
-                            <input type="tel" id="phone" name="phone" required>
-                            <span id="phoneError" style="color: red;"></span><br>
-
-                            <label for="dob">Date of Birth:</label>
-                            <input type="date" id="dob" name="dob" required>
-                            <span id="dobError" style="color: red;"></span><br>
-
-                            <h3>Choose Your Favorite Programming Languages:</h3>
-                            <div id="languagesContainer">
-                                <label><input type="checkbox" name="languages" value="JavaScript"> JavaScript</label>
-                                <label><input type="checkbox" name="languages" value="Python"> Python</label>
-                                <label><input type="checkbox" name="languages" value="Java"> Java</label>
-                                <label><input type="checkbox" name="languages" value="C++"> C++</label>
-                                <label><input type="checkbox" name="languages" value="Ruby"> Ruby</label>
-                            </div>
-
-                            
-                            <div id="selectedLanguages" style="margin-top: 10px;"></div><br>
-
-                            <label for="agreeToTerms">Terms and conditions:</label>
-                            <input type="checkbox" id="agreeToTerms" name="agreeToTerms" required><br>I agree<br>
-                            <span id="termsError" style="color: red;"></span><br>
-
-                            
-                            <label for="fileInput">Upload Your Resume:</label>
-                            <input type="file" id="fileInput" name="fileInput">
-                            <br>
-                            
-                            <input type="submit" value="Submit">
-                        </fieldset>
-                    </form>
-                    <div id="successMessage" style="display: none; color: green; margin-top: 20px;">
-                        <p>Your form has been submitted successfully!</p>
-                    </div>
-                </section>
-                -->
-
-                <!-- This is the separate div where file content will be displayed 
-                <div id="fileDisplayArea" style="border: 1px solid #ccc; margin-top: 20px; padding: 10px; display: none;">
-                    <h3>Uploaded File Content:</h3>
-                    <pre id="fileContents"></pre>
-                </div>
-            </center> -->
-        
-
-            <!--
-            <center>
-                <section id="task-section">
-                    <h2>Task Tracker - Add a Task!</h2>
-                    <div id="task-form">
-                        <input type="text" id="task-name" placeholder="Enter task title" required>
-                        <textarea id="task-desc" placeholder="Task description"></textarea>
-                        <input type="date" id="task-date" required>
-                        <button onClick="addTask()">Add Task</button>
-                    </div>
-                    <ul id="task-list"></ul>
-                </section>
-            </center>
-            -->
-        </div>
-
-    </main>
-</div>
-
-<script src="proj9.js"></script>
-<script src="proj7.js"></script>
-<!--<script src="objects.js"></script>-->
-</body>
-</html>
+        //const clearButton = document.getElementById('clear-btn');
+        //clearButton.addEventListener('click', clearCustomization);
+    }
+});
