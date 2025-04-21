@@ -4,6 +4,30 @@ function getQueryStringParam(name) {
     return urlParams.get(name);
 }
 
+ // Check and style aboutImage only if it exists
+ var aboutImage = document.getElementById('aboutImage');
+ if (aboutImage) {
+     aboutImage.style.border = '1px solid black';
+     aboutImage.style.borderRadius = '60%';
+     aboutImage.style.boxShadow = '0 0 10px rgb(0, 0, 0)';
+ }
+
+ // New York Image
+ var NewYorkImage = document.getElementById('NewYorkImage');
+ if (NewYorkImage) {
+    NewYorkImage.style.border = '1px solid black';
+    NewYorkImage.style.borderRadius = '60%';
+    NewYorkImage.style.boxShadow = '0 0 10px rgb(0, 0, 0)';
+ }
+
+ //  Games Image
+ var GamesImage = document.getElementById('GamesImage');
+ if (GamesImage) {
+    GamesImage.style.border = '1px solid black';
+    GamesImage.style.borderRadius = '60%';
+    GamesImage.style.boxShadow = '0 0 10px rgb(0, 0, 0)';
+ }
+
 // Function to get cookie value
 function getCookie(name) {
     let decodedCookie = decodeURIComponent(document.cookie);
