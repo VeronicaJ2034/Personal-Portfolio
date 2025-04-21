@@ -1,34 +1,18 @@
- // Function to get query string value
-/*function getQueryStringParam(name) {
-    const urlParams = new URLSearchParams(window.location.search);
-    return urlParams.get(name);
-}*/
+// === Image styling ===
+function styleImageById(id) {
+    const img = document.getElementById(id);
+    if (img) {
+        img.style.border = '1px solid black';
+        img.style.borderRadius = '60%';
+        img.style.boxShadow = '0 0 10px rgb(0, 0, 0)';
+    }
+}
 
- // Check and style aboutImage only if it exists
- var aboutImage = document.getElementById('aboutImage');
- if (aboutImage) {
-     aboutImage.style.border = '1px solid black';
-     aboutImage.style.borderRadius = '60%';
-     aboutImage.style.boxShadow = '0 0 10px rgb(0, 0, 0)';
- }
+styleImageById('aboutImage');
+styleImageById('NewYorkImage');
+styleImageById('GamesImage');
 
- // New York Image
- var NewYorkImage = document.getElementById('NewYorkImage');
- if (NewYorkImage) {
-    NewYorkImage.style.border = '1px solid black';
-    NewYorkImage.style.borderRadius = '60%';
-    NewYorkImage.style.boxShadow = '0 0 10px rgb(0, 0, 0)';
- }
-
- //  Games Image
- var GamesImage = document.getElementById('GamesImage');
- if (GamesImage) {
-    GamesImage.style.border = '1px solid black';
-    GamesImage.style.borderRadius = '60%';
-    GamesImage.style.boxShadow = '0 0 10px rgb(0, 0, 0)';
- }
-
-// Function to get cookie value
+// === Cookie Functions ===
 function getCookie(name) {
     let decodedCookie = decodeURIComponent(document.cookie);
     let cookies = decodedCookie.split(';');
@@ -41,7 +25,6 @@ function getCookie(name) {
     return "";
 }
 
-// Function to set a cookie with expiration
 function setCookie(name, value, days) {
     let d = new Date();
     d.setTime(d.getTime() + (days * 24 * 60 * 60 * 1000));
@@ -49,108 +32,43 @@ function setCookie(name, value, days) {
     document.cookie = name + "=" + value + ";" + expires + ";path=/";
 }
 
-// Function to delete a cookie
 function deleteCookie(name) {
-    setCookie(name, "", -1); // Setting expiration to past will delete the cookie
+    setCookie(name, "", -1);
 }
 
-// Apply customization from query string or cookies
-/*function applyCustomization() {
-    let color = getQueryStringParam('bgColor') || getCookie('bgColor');
-    
-    // Apply customization if color is found
-    if (color) {
-        document.body.style.backgroundColor = color;
-        console.log('Background color is set to ' + color);
-    } else {
-        console.log('No customization applied.');
-    }
-
-    // Only update the customization-status on about.html
-    if (window.location.pathname.includes('about.html')) {
-        const statusElement = document.getElementById('customization-status');
-        if (statusElement) {
-            if (color) {
-                statusElement.textContent = 'Background color is set to ' + color;
-            } else {
-                statusElement.textContent = 'No customization applied.';
-            }
-        } else {
-            console.warn("Customization status element not found.");
-        }
-    }
-}*/
-
-// Handle form submission
-/*function handleFormSubmit(event) {
-    event.preventDefault();
-    const color = document.getElementById('bgColor').value;
-    // Update URL with selected background color
-    window.location.search = 'bgColor=' + color;
-    // Save background color in cookies
-    setCookie('bgColor', color, 7); // Cookie expires in 7 days
-}*/
-
-// Show the cookie notice if not accepted
+// === Cookie Notice Handling ===
 function showCookieNotice() {
     const cookieNotice = document.getElementById('cookie-notice');
     const cookieConsent = getCookie('cookieConsent');
     console.log('Cookie consent status:', cookieConsent);
+
     if (cookieNotice) {
         if (!cookieConsent) {
-            cookieNotice.style.display = 'block';  // Show notice
+            cookieNotice.style.display = 'block';
             console.log('Cookie notice displayed.');
         } else {
-            cookieNotice.style.display = 'none';   // Hide if already accepted
+            cookieNotice.style.display = 'none';
             console.log('Cookie notice already accepted.');
         }
     }
 }
 
-// Handle accepting cookies
 function acceptCookies() {
-    setCookie('cookieConsent', 'true', 365); // Save consent for 1 year
+    setCookie('cookieConsent', 'true', 365);
     const notice = document.getElementById('cookie-notice');
     if (notice) {
-        notice.style.display = 'none'; // ← This hides the notice
+        notice.style.display = 'none';
         console.log('Cookies accepted and notice hidden.');
     }
 }
 
-// Clear customization (reset background and delete cookies)
-/*function clearCustomization() {
-    // Reset background color to default (white)
-    document.body.style.backgroundColor = '#ffffff';
-    
-    // Clear cookies related to customization
-    deleteCookie('bgColor');
-    deleteCookie('cookieConsent');
-    
-    // Reset the query string by removing the bgColor parameter
-    window.history.pushState({}, document.title, window.location.pathname);
-    
-    // Update the status text on about.html
-    if (window.location.pathname.includes('about.html')) {
-        document.getElementById('customization-status').textContent = 'Customization cleared. No background color set.';
-    }
-    console.log('Customization cleared. No background color set.');
-}*/
-
-// Wait for the DOM to load before running applyCustomization and cookie handling
-document.addEventListener('DOMContentLoaded', function() {
+// === DOM Ready Setup ===
+document.addEventListener('DOMContentLoaded', function () {
     console.log('DOM fully loaded and parsed');
-    //applyCustomization();
     showCookieNotice();
 
-    if (window.location.pathname.includes('about.html')) {
-        //const form = document.getElementById('customization-form');
-        //form.addEventListener('submit', handleFormSubmit);
-   
-
-        const acceptButton = document.getElementById('accept-cookies');
-        acceptButton.addEventListener('click', acceptCookies)
-
-        //const clearButton = document.getElementById('clear-btn');
-        //clearButton.addEventListener('click', clearCustomization);
+    const acceptButton = document.getElementById('accept-cookies');
+    if (acceptButton) {
+        acceptButton.addEventListener('click', acceptCookies);
     }
 });
