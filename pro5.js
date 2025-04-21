@@ -36,13 +36,6 @@ document.addEventListener('DOMContentLoaded', function () {
             profileImage.style.boxShadow = '0 0 10px rgba(0, 0, 0, 0.5)';
         }
     
-        // Check and style aboutImage only if it exists
-        var aboutImage = document.getElementById('aboutImage');
-        if (aboutImage) {
-            aboutImage.style.border = '1px solid black';
-            aboutImage.style.borderRadius = '60%';
-            aboutImage.style.boxShadow = '0 0 10px rgb(0, 0, 0)';
-        }
     
         // Check and style projectImage only if it exists
         var projectImage = document.getElementById('projectImage');
