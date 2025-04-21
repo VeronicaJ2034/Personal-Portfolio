@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>  
+    <head>
+        <title>Veronica's Portfolio Page</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="styles.css" rel="stylesheet"/>
+    </head>
+
+    <body>
+
+        <div id="wrapper">
+            <main>
+                <h1>Veronica's Portfolio</h1>
+                <div id="a" class="cmiddle">
+                    <nav>
+                        <ul>
+                            <li>
+                                <a href="index.html">Home</a>&nbsp;&nbsp;
+                                <a href="about.html">About Me</a>&nbsp;&nbsp;
+                                <a href="projects.html">Projects</a>&nbsp;&nbsp;
+                                <a href="internship.html">Internships</a>&nbsp;&nbsp;
+                                <a href="games.html">Games</a>&nbsp;&nbsp;
+                                <a href="API.html">API</a>&nbsp;&nbsp;
+                                <a href="framework.html">Framework</a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+
+                <div id="b">
+                    <h1>Framework</h1>
+
+                    <b><p>This button demonstrates jQuery.</p></b>
+                    <p id="demo">This is a test paragraph.</p>
+                    <button id="hideBtn">Hide</button>
+                    
+                    <section>
+                        <input type="text" id="search" placeholder="Search fruits...">
+                        <br><br>
+                        <ul id="suggestions"></ul>
+                    </section>
+                    <br><br>
+  
+                    <h2>Favorite Fruits Chart</h2>
+                    <p>***Uses Chart.js Library To Make The Chart***</p>
+                    <center><canvas id="fruitChart"></canvas></center>
+                    <button id="fadeBtn">Fade Out</button>&nbsp;&nbsp; <button id="fadeInBtn">Fade In</button>
+                    
+                </div>
+            </main>
+        </div>
+
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> <!-- Loads chart.js from CDN -->
+        <script src="final.js"></script> <!-- Loads final.js from local file -->
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> <!-- Loads jQuery from CDN -->
+        <script src="jQuery.js"></script> <!-- Loads jQuery from local file -->
+    </body>
+</html>
