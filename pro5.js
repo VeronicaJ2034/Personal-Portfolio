@@ -86,8 +86,7 @@ document.addEventListener('DOMContentLoaded', function () {
     // Slideshow logic
     var slideshowImages = [
         "searchlight_consulting.jpg",
-        "twr_360.jpg",
-        "twr_logo.jpg"
+        "twr_360.jpg"
     ];
 
     var currentImageIndex = 0;
@@ -170,3 +169,4 @@ document.addEventListener('DOMContentLoaded', function () {
             openOverlay(slideshowImage.src);
         });
     };
+
